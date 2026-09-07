@@ -24,4 +24,4 @@ npm install
 npm run dev -- --open
 ```
 
-v1.0.0 | © Sprigate
+v1.1.0 | © Sprigate
