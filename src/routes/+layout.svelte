@@ -1,4 +1,4 @@
-<script>
+<script lang='ts'>
 	import './layout.css';
 	import "@fontsource-variable/inter/wght.css";
 	import "@fontsource-variable/montserrat/wght.css"
@@ -12,6 +12,9 @@
 	import { themeChange } from "theme-change";
   	import { goto } from '$app/navigation';
 
+	// ui
+	import Modal from '$lib/components/Modal.svelte'
+
 	const themes = [
 		"garden", "dracula", "dim", "sunset", "autumn", "luxury", "silk",
 	]
@@ -21,6 +24,8 @@
 	const email = "nezissogated@vilvisoftware.net"
 
 	let { children } = $props();
+	let showModal = $state(false);
+
 	onMount(() => {
 		themeChange(false)
 		goto('/dashboard')
@@ -118,10 +123,10 @@
 			</ul>
 			<ul class="menu w-full grow justify-center gap-3 flex-2">
 				<li>
-					<a class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Settings" href="/settings">
+					<button class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Settings" onclick={() => {showModal = true}}>
 						<Icon icon="material-symbols:settings" class="w-5 h-5" />
 						<span class="is-drawer-close:hidden">Settings</span>
-					</a>
+					</button>
 				</li>
 				<li>
 					<fieldset class="fieldset is-drawer-close:hidden">
@@ -139,8 +144,12 @@
 			</ul>
 		</div>
 	</div>
-
 </div>
+
+<!-- Modal Root -->
+<Modal bind:isOpen={showModal} title="Settings" onClose={() => {showModal = false}}>
+	<p>paragraph jumpscare.</p>
+</Modal>
 
 <style>
 	:global(body) {

@@ -29,6 +29,6 @@
     <a class="link link-hover">Vite</a>
   </nav>
   <p class="absolute text-xs opacity-40 font-mono bottom-0 right-0 p-2">
-    Sprig pre-alpha v0.1
+    Sprig pre-alpha v1.1.0
   </p>
 </footer>
