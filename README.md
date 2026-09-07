@@ -24,4 +24,4 @@ npm install
 npm run dev -- --open
 ```
 
-_masih dalam pre-alpha phase._
+v1.0.0 | © Sprigate
