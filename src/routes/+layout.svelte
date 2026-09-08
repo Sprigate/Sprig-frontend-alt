@@ -1,5 +1,4 @@
 <script lang='ts'>
-<script lang='ts'>
 	import './layout.css';
 	import "@fontsource-variable/inter/wght.css";
 	import "@fontsource-variable/montserrat/wght.css"
@@ -147,10 +146,8 @@
 			<ul class="menu w-full grow justify-center gap-3 flex-2">
 				<li>
 					<button class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Settings" onclick={() => {showModal = true}}>
-					<button class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Settings" onclick={() => {showModal = true}}>
 						<Icon icon="material-symbols:settings" class="w-5 h-5" />
 						<span class="is-drawer-close:hidden">Settings</span>
-					</button>
 					</button>
 				</li>
 			</ul>
