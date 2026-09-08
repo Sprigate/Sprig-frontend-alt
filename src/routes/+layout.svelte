@@ -1,4 +1,4 @@
-<script>
+<script lang='ts'>
 	import './layout.css';
 	import "@fontsource-variable/inter/wght.css";
 	import "@fontsource-variable/montserrat/wght.css"
@@ -12,18 +12,45 @@
 	import { themeChange } from "theme-change";
   	import { goto } from '$app/navigation';
 
-	const themes = [
+	// ui
+	import Modal from '$lib/components/Modal.svelte'
+
+	const themes = $state([
 		"garden", "dracula", "dim", "sunset", "autumn", "luxury", "silk",
-	]
+	])
 
 	// Testing values
-	const displayName = "Nez"
-	const email = "nezissogated@vilvisoftware.net"
+	let displayName = $state('Nez')
+	let email = $state('nezissogated@vilvisoftware.net')
+	let currentTheme = $state('garden')
 
 	let { children } = $props();
+	let showModal = $state(false);
+	
+	const profileStorageKey = 'sprig-profile'
+	let profileLoaded = $state(false)
+
 	onMount(() => {
+		// Persistent value save
+		const savedProfile = localStorage.getItem(profileStorageKey)
+		if (savedProfile) {
+			const profile = JSON.parse(savedProfile)
+			displayName = profile.displayName ?? displayName
+			email = profile.email ?? email
+			currentTheme = profile.currentTheme ?? currentTheme
+		}
+		profileLoaded = true
 		themeChange(false)
-		goto('/dashboard')
+		document.documentElement.setAttribute('data-theme', currentTheme)
+
+		goto('/dashboard');
+	})
+
+	$effect(() => {
+		if (profileLoaded) {
+			localStorage.setItem(profileStorageKey, JSON.stringify({ displayName, email, currentTheme }))
+			document.documentElement.setAttribute('data-theme', currentTheme)
+		}
 	})
 </script>
 
@@ -118,29 +145,48 @@
 			</ul>
 			<ul class="menu w-full grow justify-center gap-3 flex-2">
 				<li>
-					<a class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Settings" href="/settings">
+					<button class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Settings" onclick={() => {showModal = true}}>
 						<Icon icon="material-symbols:settings" class="w-5 h-5" />
 						<span class="is-drawer-close:hidden">Settings</span>
-					</a>
-				</li>
-				<li>
-					<fieldset class="fieldset is-drawer-close:hidden">
-						<legend class="fieldset-legend">
-							<Icon icon="material-symbols:palette" class="w-5 h-5" />
-							Themes
-						</legend>
-						<select class="is-drawer-close:hidden is-drawer-close:tooltip-right select" data-tip="Themes">
-							{#each themes as theme}
-								<option data-set-theme={theme}>{theme.toLocaleUpperCase()}</option>
-							{/each}
-						</select>
-					</fieldset>
+					</button>
 				</li>
 			</ul>
 		</div>
 	</div>
-
 </div>
+
+<!-- Modal Root -->
+<Modal bind:isOpen={showModal} title="Settings" onClose={() => {showModal = false}}>
+	<ul class="list min-w-full">
+		<li class="list-row flex flex-col">
+			<fieldset class="fieldset">
+			<legend class="fieldset-legend">
+				<Icon icon="material-symbols:person" class="w-5 h-5" />
+				<h2>Basic Information</h2>
+			</legend>
+				<legend class="fieldset-label">Display Name</legend>
+				<input type="text" class="input" bind:value="{displayName}" id="display-name"/>
+
+				<legend class="fieldset-label">Email</legend>
+				<input type="email" class="input" bind:value="{email}" id="email">
+			</fieldset>
+		</li>
+		<li class="list-row flex flex-col">
+			<fieldset class="fieldset is-drawer-close:hidden">
+				<legend class="fieldset-legend">
+					<Icon icon="material-symbols:palette" class="w-5 h-5" />
+					Themes
+				</legend>
+				<select class="is-drawer-close:hidden is-drawer-close:tooltip-right select" data-tip="Themes" bind:value={currentTheme}>
+					{#each themes as theme}
+						<option value={theme} data-set-theme={theme}>{theme.toLocaleUpperCase()}</option>
+					{/each}
+				</select>
+			</fieldset>
+		</li>
+	</ul>
+	<i class="text-neutral-content text-xs">Semua perubahan akan di autosaved dan auto-update.</i>
+</Modal>
 
 <style>
 	:global(body) {
@@ -154,7 +200,7 @@
 </style>
 
 <svelte:head>
-	<title>Sprigate</title>
+	<title>Sprig</title>
 	<link rel="icon" href={favicon} />
 </svelte:head>
 

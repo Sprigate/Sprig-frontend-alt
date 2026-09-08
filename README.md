@@ -1,4 +1,4 @@
-# Sprig-frontend-alt
+# Sprig-frontend
 Asset front-end untuk Sprig menggunakan SvelteKit.
 
 Frameworks, Libraries, dan Tools yang digunakan:
@@ -14,7 +14,7 @@ Frameworks, Libraries, dan Tools yang digunakan:
 Clone repository (pastikan git telah terinstall, anda bisa juga mendownload secara manual).
 
 ```bash
-git clone https://github.com/Sprigate/Sprig-frontend-alt.git
+git clone https://github.com/Sprigate/Sprig-frontend.git
 cd sprig-frontend
 ```
 
@@ -24,4 +24,4 @@ npm install
 npm run dev -- --open
 ```
 
-_masih dalam pre-alpha phase._
+v1.2.0 | © Sprigate

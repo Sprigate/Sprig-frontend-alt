@@ -1,7 +1,3 @@
-<script>
-  import Icon from "@iconify/svelte";
-</script>
-
 <footer
   class="footer sm:footer-horizontal bg-neutral text-neutral-content p-10 relative"
 >
@@ -29,6 +25,6 @@
     <a class="link link-hover">Vite</a>
   </nav>
   <p class="absolute text-xs opacity-40 font-mono bottom-0 right-0 p-2">
-    Sprig pre-alpha v0.1
+    Sprig pre-alpha v1.2.0
   </p>
 </footer>
