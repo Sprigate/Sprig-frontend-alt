@@ -16,15 +16,15 @@
   <nav>
     <h6 class="footer-title">Contact</h6>
     <a class="link link-hover">Email</a>
-    <a class="link link-hover">Github</a>
+    <a class="link link-hover" href="https://github.com/Sprigate" target="_blank" rel="noopener noreferrer">Github</a>
   </nav>
   <nav>
     <h6 class="footer-title">Sources</h6>
-    <a class="link link-hover">DaisyUI</a>
-    <a class="link link-hover">Svelte</a>
-    <a class="link link-hover">Vite</a>
+    <a class="link link-hover" href="https://daisyui.com" target="_blank" rel="noopener noreferrer">DaisyUI</a>
+    <a class="link link-hover" href="https://svelte.dev/" target="_blank" rel="noopener noreferrer">Svelte</a>
+    <a class="link link-hover" href="https://vite.dev/" target="_blank" rel="noopener noreferrer">Vite</a>
   </nav>
   <p class="absolute text-xs opacity-40 font-mono bottom-0 right-0 p-2">
-    Sprig pre-alpha v1.2.0
+    Sprig pre-alpha v1.3.0
   </p>
 </footer>

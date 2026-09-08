@@ -80,7 +80,7 @@
 								<ul class="menu dropdown-content bg-base-100 shadow-md max-w-90 z-1 gap-2">
 								
 									<li>
-										<div class="flex flex-row items-center justify-center">
+										<div class="flex flex-row items-center justify-between">
 											<div class="flex flex-row items-center">
 												<div class="avatar mr-3">
 													<div class="ring-primary ring-offset-base-100 rounded-full w-9 ring-2 ring-offset-2">

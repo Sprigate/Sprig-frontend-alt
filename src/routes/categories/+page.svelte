@@ -1,13 +1,8 @@
 <script>
-      import heroBG from '$lib/assets/heroBackground2.png'
+      import HeroV2 from '$lib/components/ui/HeroV2.svelte'
 </script>
 
-<div class="hero min-h-80" style="background-image: url({heroBG}); background-position: center;">
-      <div class="hero-overlay"></div>
-      <div class="hero-content text-neutral-content text-left">
-            <div class="max-w-md">
-                  <h1 class="mb-2 text-3xl font-bold">Categories</h1>
-                  <p>You are in a <b>Categories</b>.</p>
-            </div>
-      </div>
-</div>
+<HeroV2>
+      <h1 class="mb-3 text-3xl font-bold">Categorizz</h1>
+      <p class="text-xs">You are in Categories</p>
+</HeroV2>
